@@ -6,6 +6,7 @@ import boto3
 import socket
 
 COPILOT_SERVICE_NAME = os.getenv('COPILOT_SERVICE_NAME')
+COPILOT_ENVIRONMENT_NAME = os.getenv('COPILOT_ENVIRONMENT_NAME')
 
 app = Flask(__name__, template_folder="./")
 
@@ -16,6 +17,7 @@ def healthcheck():
 def hello():
     data = {}
     data['copilot_svc_name'] = COPILOT_SERVICE_NAME
+    data['copilot_env_name'] = COPILOT_ENVIRONMENT_NAME
     data['hostname'] = socket.gethostname()
     data['machine'] = platform.machine()
     data['system'] = platform.system()
